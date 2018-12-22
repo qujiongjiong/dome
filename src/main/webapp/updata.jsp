@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="main" method="post">
+<form action="/add" method="post">
     <input type="hidden" name="id" value="${user.id}"/>
     username<input type="text" name="name" value="${user.name}"/>
     userpassword<input type="text" name="password" value="${user.password}"/>

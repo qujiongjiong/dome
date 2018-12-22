@@ -49,22 +49,20 @@ public class UserController {
 //增加
     @RequestMapping(value = "add")
     public String save(User user){
-        System.out.println("增加");
-
-            userService.add(user);
-
+      if(user.getId()==null){
+          userService.add(user);
+      }else{
+          userService.updata(user);
+      }
         return "redirect:main";
     }
 
     //修改
     @RequestMapping(value = "/updata")
     public String updata(@RequestParam("id") int id,HttpServletRequest request){
-        System.out.println(id);
         User userById = userService.getUserById(id);
-        System.out.println(userById);
-
         HttpSession session=request.getSession();
         session.setAttribute("user",userById);
-        return "main.jsp";
+        return "updata.jsp";
     }
 }
